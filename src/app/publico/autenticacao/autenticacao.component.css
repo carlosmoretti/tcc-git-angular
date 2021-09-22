@@ -1,0 +1,14 @@
+.fulfil {
+  height: 100vh;
+}
+
+@media only screen and (min-width: 1024px) {
+  .imagem {
+    height: 50vh;
+    width: 80vh;
+    background-image: url('https://revista-images.querobolsa.com.br/revista/post_images/33446/9c2638a3e5b9a2e129ba9d04fe2b0ec2cadb4536.jpg?1610131076');
+    background-size: cover;
+    border-radius: 1rem;
+    margin-right: 2.5rem;
+  }
+}

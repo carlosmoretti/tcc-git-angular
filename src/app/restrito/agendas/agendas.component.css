@@ -1,0 +1,18 @@
+.mensagem {
+  background-color: #ecf0f1;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+.mensagem:hover {
+  background-color: #f0f0f0;
+  transition: all 0.3s ease-in-out;
+}
+
+.blockquote p {
+  font-size: 0.9rem;
+}
+
+.blockquote .blockquote-footer {
+  font-size: 0.7rem;
+}

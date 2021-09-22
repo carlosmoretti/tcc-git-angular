@@ -1,0 +1,15 @@
+.info {
+  width: 100%;
+  height: 4rem;
+  background-color: #34495e;
+}
+
+.info .numero {
+  font-size: 2rem;
+  color: #FFF;
+  font-weight: bold;
+}
+
+.info .descricao {
+  color: #FFF;
+}

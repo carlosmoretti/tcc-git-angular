@@ -1,0 +1,25 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Início</a></li>
+  </ol>
+</nav>
+
+<div class="px-3">
+  <div class="row mt-3">
+    <div class="col-sm-3 info d-flex align-items-center justify-content-between"
+      [ngStyle]="{ 'background-color' : i % 2 == 0 ? '#34495e' : '#2c3e50'}"
+      *ngFor="let item of cardsInfo; let i = index">
+      <div class="numero">{{item.valor | number}}</div>
+      <div class="descricao">{{item.descricao}}</div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-7">
+    <app-feedback></app-feedback>
+  </div>
+  <div class="col-sm-5">
+    <app-agendas></app-agendas>
+  </div>
+</div>

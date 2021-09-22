@@ -1,0 +1,24 @@
+<div class="d-flex justify-content-end" *ngIf="config.valores != null">
+  <button class="btn btn-primary btn-sm mb-2">+ Novo</button>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th *ngFor="let item of config.colunas">{{item}}</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of config.valores">
+      <td *ngFor="let row of item">
+        {{row}}
+      </td>
+      <td>
+        <div class="d-flex justify-content-end">
+          <a class="btn btn-sm btn-warning mr-2" [routerLink]="[config.alteracaoUrl, getId(item)]">Editar</a>
+          <a class="btn btn-sm btn-danger" (click)="deleteRegister(getId(item))">Remover</a>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

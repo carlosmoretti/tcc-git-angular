@@ -1,0 +1,13 @@
+<div class="card mt-3">
+  <div class="card-header">
+    Últimas agendas preenchidas
+  </div>
+  <div class="card-body">
+    <div *ngFor="let item of ultimosPreenchimentos" class="mensagem mb-2 text-center pt-2 pb-1">
+      <blockquote class="blockquote">
+        <p class="mb-0">A agenda de {{item.aluno}} foi preenchida.</p>
+        <footer class="blockquote-footer">por {{item.professor}} às {{item.dataHora | date: 'dd/MM/yyyy'}} </footer>
+      </blockquote>
+    </div>
+  </div>
+</div>

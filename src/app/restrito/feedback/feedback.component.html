@@ -1,0 +1,13 @@
+<div class="card mt-3">
+  <div class="card-header">
+    Feedback dos Responsáveis <div class="badge badge-info">5 novas</div>
+  </div>
+  <div class="card-body">
+    <div *ngFor="let item of feedbacks" class="mensagem mb-2 text-center pt-2 pb-1">
+      <blockquote class="blockquote">
+        <p class="mb-0">{{reduzirCaracteres(item.mensagem)}}</p>
+        <footer class="blockquote-footer">{{item.responsavel}} (Pai/mãe de {{item.aluno}})</footer>
+      </blockquote>
+    </div>
+  </div>
+</div>

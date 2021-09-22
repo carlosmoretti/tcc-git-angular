@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  font-size: 12px;
+  font-family: 'Oxygen', sans-serif;
+}
+
+.card {
+  -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.05);
+  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.05);
+}
+
+.card-header {
+  background-color: #2c3e50;
+  color: #FFF;
+  letter-spacing: 0.6px;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  border-color: #2c3e50;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #16a085;
+  outline: 0 none;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.8rem;
+  color: #2c3e50;
+}
