@@ -1,0 +1,21 @@
+.alunocard {
+  border-radius: 0.3rem;
+  width: 100%;
+  background: rgb(52,152,219);
+background: linear-gradient(90deg, rgba(52,152,219,1) 0%, rgba(0,212,255,1) 100%);
+}
+
+.alunocard .nome {
+  font-weight: normal;
+  color: #FFF;
+  font-size: 1.4rem;
+  letter-spacing: 0.6px;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+.alunocard .matricula {
+  font-weight: normal;
+  color: #FFF;
+  font-size: 1rem;
+}

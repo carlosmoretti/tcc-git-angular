@@ -10,6 +10,8 @@ import { AgendasComponent } from './agendas/agendas.component';
 import { ResponsavelComponent } from './responsavel/responsavel.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EditarComponent } from './responsavel/editar/editar.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IncluiralunoComponent } from './responsavel/incluiraluno/incluiraluno.component';
 
 let routes: Routes = [
   { path: '', component: RestritoComponent, children: [
@@ -27,10 +29,13 @@ let routes: Routes = [
     FeedbackComponent,
     AgendasComponent,
     ResponsavelComponent,
-    EditarComponent
+    EditarComponent,
+    IncluiralunoComponent
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes),
     HttpClientModule,
     SharedModule

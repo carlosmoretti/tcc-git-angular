@@ -6,7 +6,66 @@
 </nav>
 
 <div class="card">
-  <div class="card-header">Editar</div>
+  <div class="card-header">{{labelTela}}</div>
   <div class="card-body">
+    <div *ngIf="responsavel">
+      <form #formulario="ngForm">
+        <div class="row align-items-center">
+          <div class="col-sm-3 mb-2">
+            <label>Nome de Usuário</label>
+            <input required type="text" class="form-control" name="nomeUsuario" [(ngModel)]="responsavel.login" />
+          </div>
+          <div class="col-sm-3 mb-2">
+            <label>Nome</label>
+            <input required type="text" class="form-control" name="nome" [(ngModel)]="responsavel.nome" />
+          </div>
+          <div class="col-sm-3 mb-2">
+            <label>Sobrenome</label>
+            <input required type="text" class="form-control" name="sobrenome" [(ngModel)]="responsavel.sobrenome" />
+          </div>
+          <div class="col-sm-3 mb-2">
+            <label>Matrícula</label>
+            <input required type="text" class="form-control" name="matricula" [(ngModel)]="responsavel.matricula" />
+          </div>
+          <div class="col-sm-3 mb-2">
+            <label>Telefone</label>
+            <input required type="text" class="form-control" name="telefone" [(ngModel)]="responsavel.telefone" placeholder="+55" />
+          </div>
+          <div class="col-sm-3 mb-2">
+            <label>Senha</label>
+            <input type="text" class="form-control" disabled value="**********" placeholder="+55" />
+          </div>
+          <div class="col-sm-3 mb-2 align-items-center pt-4">
+            <a href="#">Deseja reiniciar a senha do usuário?</a>
+          </div>
+        </div>
+      </form>
+      <span>Usuário cadastrado em {{responsavel.dataInclusao | date: 'dd/MM/yyyy'}}.</span>
+      <hr />
+      <div class="card">
+        <div class="card-header">Alunos vinculados</div>
+        <div class="card-body">
+          <button class="btn btn-sm btn-dark mb-2" (click)="visaoInclusao = !visaoInclusao">Incluir +</button>
+          <div *ngIf="visaoInclusao">
+            <app-incluiraluno (alunoHandler)="adicionarAlunoHandler($event)" [aluno]="usuarioSelecionado"></app-incluiraluno>
+          </div>
+          <div *ngFor="let item of responsavel.alunos; let i = index" class="alunocard d-flex align-items-center justify-content-between p-3 mb-2">
+            <div>
+              <div class="nome">{{item.nome}} {{item.sobrenome}}</div>
+              <div class="matricula">Mat. {{item.matricula}}</div>
+            </div>
+            <div class="d-flex">
+              <button class="btn btn-light btn-sm mr-2" (click)="editarUsuario(item, i)">
+                Editar
+              </button>
+              <button class="btn btn-danger btn-sm" (click)="removerAluno(i)">
+                Desassociar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary mt-3" [ngClass]="{ 'btn-disabled' : !formulario.valid }" (click)="salvar()">Salvar alterações</button>
+    </div>
   </div>
 </div>

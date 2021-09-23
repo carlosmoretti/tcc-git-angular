@@ -18,10 +18,11 @@ export class GridComponent implements OnInit {
   @Input() config!: GridDto;
   @Input() service!: GenericService<any>;
 
-  deleteRegister(id: number) {
-    // this.service.delete(id)
-    //   .subscribe(e => console.log(e));
-    this.toastrService.success("Teste");
+  deleteRegister(id: number, i: number) {
+    this.service.delete(id)
+      .subscribe(e => {
+        this.config.valores.splice(i, 1);
+      });
   }
 
   getId(item: Array<any>) {

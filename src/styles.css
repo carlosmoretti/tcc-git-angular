@@ -41,3 +41,17 @@ input[type="color"]:focus,
   font-size: 1.8rem;
   color: #2c3e50;
 }
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}
+
+.btn-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+

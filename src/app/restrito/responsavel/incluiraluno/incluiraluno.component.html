@@ -1,0 +1,49 @@
+<div class="card mb-2">
+  <div class="card-body">
+    <form #formulario="ngForm">
+      <div class="row" *ngIf="!consultarExistente">
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label>Nome</label>
+            <input required type="text" name="nome" class="form-control" [(ngModel)]="aluno.nome"/>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label>Sobrenome</label>
+            <input required type="text" name="sobrenome" class="form-control" [(ngModel)]="aluno.sobrenome" />
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label>Data de Nascimento</label>
+            <input required type="date" name="dataNascimento" class="form-control" [(ngModel)]="aluno.dataNascimento" />
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label>Matrícula</label>
+            <input type="text" name="matricula" class="form-control mb-2" name="matricula" disabled [(ngModel)]="aluno.matricula">
+          </div>
+        </div>
+      </div>
+    </form>
+    <div *ngIf="consultarExistente">
+      <div class="row align-items-center">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label>Matrícula do Aluno:</label>
+            <input type="text" class="form-control" [(ngModel)]="matriculaBusca" />
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <button class="btn btn-success btn-sm mt-2" (click)="getAlunoByMatricula()">Consultar</button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <a [routerLink]="" (click)="consultarExistente = !consultarExistente">{{consultarExistente ? 'Registrar novo aluno' : 'Aluno já existente?'}}</a>
+    </div>
+    <button class="btn btn-sm btn-success mt-3" [ngClass]="{ 'btn-disabled' : !formulario.valid }" (click)="concluirAssociacao()">Salvar</button>
+  </div>
+</div>
