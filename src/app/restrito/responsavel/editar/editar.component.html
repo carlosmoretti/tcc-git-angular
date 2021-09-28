@@ -1,6 +1,6 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="#">Início</a></li>
+    <li class="breadcrumb-item"><a [routerLink]="['/restrito', 'responsavel']">Início</a></li>
     <li class="breadcrumb-item active" aria-current="page">Responsáveis</li>
   </ol>
 </nav>
@@ -65,7 +65,7 @@
           </div>
         </div>
       </div>
-      <button class="btn btn-primary mt-3" [ngClass]="{ 'btn-disabled' : !formulario.valid }" (click)="salvar()">Salvar alterações</button>
+      <button class="btn btn-primary mt-3" [ngClass]="{ 'btn-disabled' : !formulario.valid }" (click)="salvar()">Salvar</button>
     </div>
   </div>
 </div>

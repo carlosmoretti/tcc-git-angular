@@ -34,7 +34,7 @@ export class ResponsavelComponent
       valoresNested.push(item.sobrenome);
       valoresNested.push(item.login);
       valoresNested.push(item.matricula);
-      valoresNested.push(item.alunos.length);
+      valoresNested.push(item.alunos.length + ' <i class="fas fa-user"></i>');
 
       valores.push(valoresNested);
     }

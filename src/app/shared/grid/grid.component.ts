@@ -19,10 +19,13 @@ export class GridComponent implements OnInit {
   @Input() service!: GenericService<any>;
 
   deleteRegister(id: number, i: number) {
-    this.service.delete(id)
-      .subscribe(e => {
-        this.config.valores.splice(i, 1);
-      });
+    let resultado = confirm('Deseja excluir o registro selecionado?')
+    if(resultado) {
+      this.service.delete(id)
+        .subscribe(e => {
+          this.config.valores.splice(i, 1);
+        });
+    }
   }
 
   getId(item: Array<any>) {

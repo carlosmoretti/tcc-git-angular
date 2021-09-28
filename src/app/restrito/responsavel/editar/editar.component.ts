@@ -37,8 +37,7 @@ export class EditarComponent implements OnInit {
   criarMatricula() {
     const data = new Date();
     let retorno = data.getFullYear() + data.toLocaleTimeString() + data.getMilliseconds() + 'R';
-    retorno = retorno.replace(':', '');
-    retorno = retorno.replace(':', '');
+    retorno = retorno.split(':').join('');
     return retorno;
   }
 
