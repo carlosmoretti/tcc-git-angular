@@ -26,6 +26,9 @@ export class IncluiralunoComponent implements OnInit {
       this.aluno.matricula = this.aluno.matricula.replace(':', '');
       this.aluno.matricula = this.aluno.matricula.replace(':', '');
       this.aluno.matricula = this.aluno.matricula.replace('/', '');
+    } else {
+      console.log(this.aluno.dataNascimento)
+      this.aluno.dataNascimento = new Date(this.aluno.dataNascimento).toISOString().split('T')[0]
     }
   }
 

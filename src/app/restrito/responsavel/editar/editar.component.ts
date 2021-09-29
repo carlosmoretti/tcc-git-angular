@@ -20,6 +20,8 @@ export class EditarComponent implements OnInit {
   labelTela!: string;
   idUsuario!: number;
 
+  alunoCarregadoAlteracao!: number;
+
   ngOnInit(): void {
     this.idUsuario = this.route.snapshot.params.id;
 
@@ -63,11 +65,13 @@ export class EditarComponent implements OnInit {
 
     this.responsavel.alunos.push(e);
     this.usuarioSelecionado = null;
+
+    this.responsavel.alunos.splice(this.alunoCarregadoAlteracao, 1);
   }
 
   editarUsuario(item: any, i: number) {
     this.usuarioSelecionado = JSON.parse(JSON.stringify(item));
-    this.responsavel.alunos.splice(i, 1);
+    this.alunoCarregadoAlteracao = i;
     this.visaoInclusao = true;
   }
 }
