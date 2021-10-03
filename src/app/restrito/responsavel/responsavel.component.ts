@@ -23,7 +23,7 @@ export class ResponsavelComponent
   }
 
   montarGrid(itens: Array<any>) : GridDto {
-    let colunas = ['ID', 'Nome', 'Sobrenome', 'Nome de Usuário', 'Matrícula', 'Alunos Atrelados'];
+    let colunas = ['ID', 'Nome', 'Sobrenome', 'Nome de Usuário', 'Matrícula', 'Qtde. Alunos Associados'];
     let valores = [];
 
     for(let item of itens) {

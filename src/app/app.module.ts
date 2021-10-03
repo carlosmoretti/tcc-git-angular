@@ -1,3 +1,4 @@
+import { SharedService } from './service/shared.service';
 import { PublicoModule } from './publico/publico.module';
 import { RestritoModule } from './restrito/restrito.module';
 import { NgModule } from '@angular/core';

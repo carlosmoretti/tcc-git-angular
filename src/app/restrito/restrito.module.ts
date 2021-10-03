@@ -1,3 +1,5 @@
+import { SharedService } from './../service/shared.service';
+import { TurmaService } from './../service/turma/turma.service';
 import { SharedModule } from './../shared/shared.module';
 import { GridComponent } from './../shared/grid/grid.component';
 import { RestritoComponent } from './restrito/restrito.component';
@@ -12,6 +14,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { EditarComponent } from './responsavel/editar/editar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IncluiralunoComponent } from './responsavel/incluiraluno/incluiraluno.component';
+import { TurmaComponent } from './turma/turma.component';
+import { EditarTurmaComponent } from './turma/editarTurma/editarTurma.component';
+import { NgbModalModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 let routes: Routes = [
   { path: '', component: RestritoComponent, children: [
@@ -19,6 +24,9 @@ let routes: Routes = [
     { path: 'responsavel', component: ResponsavelComponent, },
     { path: 'responsavel/editar/:id', component: EditarComponent },
     { path: 'responsavel/novo', component: EditarComponent },
+    { path: 'turmas', component: TurmaComponent },
+    { path: 'turmas/editar/:id', component: EditarTurmaComponent },
+    { path: 'turmas/novo', component: EditarTurmaComponent },
   ]}
 ]
 
@@ -30,7 +38,9 @@ let routes: Routes = [
     AgendasComponent,
     ResponsavelComponent,
     EditarComponent,
-    IncluiralunoComponent
+    IncluiralunoComponent,
+    TurmaComponent,
+    EditarTurmaComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +48,13 @@ let routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes),
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    NgbModalModule,
+    NgbTooltipModule,
+  ],
+  providers: [
+    TurmaService,
+    SharedService
   ]
 })
 export class RestritoModule { }

@@ -1,0 +1,54 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a [routerLink]="['/restrito', 'responsavel']">Início</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Responsáveis</li>
+  </ol>
+</nav>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Associar usuário a turma</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #inclusaoAluno="ngForm">
+      <div class="form-group">
+        <label>Matrícula do Usuário</label>
+        <input [(ngModel)]="matriculaAlunoModal" name="matriculaAlunoModal" type="text" class="form-control" required />
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button [disabled]="inclusaoAluno.invalid" type="button" class="btn btn-outline-dark btn-sm" (click)="modal.close()">Associar</button>
+  </div>
+</ng-template>
+
+<div class="card">
+  <div class="card-header">{{labelTela}}</div>
+  <div class="card-body">
+    <form #form="ngForm">
+      <div class="form-group">
+        <label>Matrícula</label>
+        <input [disabled]="true" type="text" class="form-control" [(ngModel)]="item.matricula" name="matricula" required/>
+      </div>
+
+      <h4>Alunos</h4>
+      <div class="row">
+        <div class="col-sm-3" *ngFor="let aluno of item.alunos; let i = index">
+          <div class="incluiraluno text-center mb-2 pointer" [ngbTooltip]="aluno.matricula" (click)="removerAluno(i)">
+            {{aluno.nome}} {{aluno.sobrenome}}
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="incluiraluno text-center mb-2 pointer" (click)="abrirModal(content)">
+            <i class="fa fa-user-plus" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-sm" (click)="salvar()">Salvar</button>
+    </form>
+  </div>
+</div>
