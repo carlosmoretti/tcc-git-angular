@@ -7,7 +7,7 @@
 
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Associar usuário a turma</h4>
+    <h4 class="modal-title" id="modal-basic-title">Associar aluno a turma</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -34,16 +34,20 @@
         <input [disabled]="true" type="text" class="form-control" [(ngModel)]="item.matricula" name="matricula" required/>
       </div>
 
-      <h4>Alunos</h4>
-      <div class="row">
-        <div class="col-sm-3" *ngFor="let aluno of item.alunos; let i = index">
-          <div class="incluiraluno text-center mb-2 pointer" [ngbTooltip]="aluno.matricula" (click)="removerAluno(i)">
-            {{aluno.nome}} {{aluno.sobrenome}}
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="incluiraluno text-center mb-2 pointer" (click)="abrirModal(content)">
-            <i class="fa fa-user-plus" aria-hidden="true"></i>
+      <div class="card mb-2">
+        <div class="card-header">Alunos</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-3" *ngFor="let aluno of item.alunos; let i = index">
+              <div class="incluiraluno text-center mb-2 pointer" [ngbTooltip]="aluno.matricula" (click)="removerAluno(i)">
+                <div>{{aluno.nome}} {{aluno.sobrenome}}</div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="incluiraluno text-center mb-2 pointer" (click)="abrirModal(content)">
+                <i class="fa fa-user-plus" aria-hidden="true"></i>
+              </div>
+            </div>
           </div>
         </div>
       </div>

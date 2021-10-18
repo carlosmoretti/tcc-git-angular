@@ -1,6 +1,7 @@
 import { SharedService } from './../service/shared.service';
 import { TurmaService } from './../service/turma/turma.service';
 import { SharedModule } from './../shared/shared.module';
+import { InternoModule } from '../restrito/interno/interno.module';
 import { GridComponent } from './../shared/grid/grid.component';
 import { RestritoComponent } from './restrito/restrito.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -27,6 +28,7 @@ let routes: Routes = [
     { path: 'turmas', component: TurmaComponent },
     { path: 'turmas/editar/:id', component: EditarTurmaComponent },
     { path: 'turmas/novo', component: EditarTurmaComponent },
+    { path: 'interno', loadChildren: () => import('./interno/interno.module').then(x => x.InternoModule) }
   ]}
 ]
 
@@ -51,6 +53,7 @@ let routes: Routes = [
     SharedModule,
     NgbModalModule,
     NgbTooltipModule,
+    InternoModule
   ],
   providers: [
     TurmaService,

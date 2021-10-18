@@ -9,13 +9,13 @@
     <table class="table table-striped" *ngIf="config.valores.length > 0; else semDados">
       <thead>
         <tr>
-          <th *ngFor="let item of config.colunas">{{item}}</th>
+          <th *ngFor="let item of config.colunas; let i = index" [ngClass]="{ 'd-none' : i == 0 }">{{item}}</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of config.valores; let i = index">
-          <td *ngFor="let row of item" class="align-middle">
+          <td *ngFor="let row of item; let j = index" class="align-middle" [ngClass]="{ 'd-none' : j == 0 }">
             <span [innerHTML]="row"></span>
           </td>
           <td>

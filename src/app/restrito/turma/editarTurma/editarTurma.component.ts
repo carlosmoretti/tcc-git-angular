@@ -31,7 +31,7 @@ export class EditarTurmaComponent implements OnInit {
 
       this.labelTela = 'Editar Turma'
     } else {
-      this.item.matricula = this.sharedService.criarMatricula();
+      this.item.matricula = this.sharedService.criarMatricula('T');
     }
   }
 

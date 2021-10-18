@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { PublicoComponent } from './publico/publico.component';
 import { FormsModule } from '@angular/forms';
 import { AutenticacaoComponent } from './autenticacao/autenticacao.component';
+import { NaoencontradoComponent } from './naoencontrado/naoencontrado.component';
 
 let routes: Routes = [
   { path: '', component: PublicoComponent, children: [
@@ -15,7 +16,8 @@ let routes: Routes = [
 @NgModule({
   declarations: [
     PublicoComponent,
-    AutenticacaoComponent
+    AutenticacaoComponent,
+    NaoencontradoComponent
   ],
   imports: [
     CommonModule,
