@@ -1,3 +1,24 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Esqueci minha senha!</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="email">Informe o seu email:</label>
+        <input type="text" class="form-control" [(ngModel)]="emailRedefinicao" name="emailRedefinicao"/>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark btn-sm" (click)="modal.close('Save click')">Enviar redefinição de senha</button>
+  </div>
+</ng-template>
+
+
 <div class="d-flex m-auto w-100 fulfil align-items-center justify-content-center">
   <div class="imagem">
   </div>
@@ -16,10 +37,10 @@
           </div>
           <div class="form-group">
             <label for="senha">Senha</label>
-            <input type="text" class="form-control" [(ngModel)]="usuario.senha" name="senha" required name="senha" />
+            <input type="password" class="form-control" [(ngModel)]="usuario.senha" name="senha" required name="senha" />
           </div>
         </form>
-        <a href="#">Esqueci minha senha.</a>
+        <a [routerLink]="" (click)="open(content)">Esqueci minha senha.</a>
         <button (click)="autenticar()" type="submit" class="btn btn-primary w-100 mt-2">Autenticar</button>
       </div>
     </div>

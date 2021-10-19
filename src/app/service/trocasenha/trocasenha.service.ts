@@ -18,4 +18,11 @@ export class TrocasenhaService {
     let url= environment.apiUrl + '/auth/trocasenha/' + id + '/confirmar';
     return this.http.post(url, obj);
   }
+
+  solicitar(email: string, modulo: string) {
+    let url= environment.apiUrl + '/auth/trocarsenha/';
+    return this.http.post(url, {
+      email, modulo
+    })
+  }
 }

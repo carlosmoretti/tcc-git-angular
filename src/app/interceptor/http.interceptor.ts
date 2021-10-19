@@ -13,14 +13,13 @@ intercept(
 
         return next.handle(req).pipe(
             catchError((err: any) => {
-                if(err instanceof HttpErrorResponse) {
-                    try {
-                        this.toasterService.error(err.error.message);
-                    } catch(e) {
-                        this.toasterService.error('Encontramos um erro. Entre em contato com o Administrador.');
-                    }
-                }
-                return of(err);
+              if(typeof err == 'string') {
+                this.toasterService.error(err);
+              } else {
+                this.toasterService.error('Encontramos um erro. Entre em contato com o Administrador.');
+              }
+
+              return of(err);
             }));
 
       }

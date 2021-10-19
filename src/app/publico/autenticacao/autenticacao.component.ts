@@ -1,7 +1,10 @@
+import { TrocasenhaService } from './../../service/trocasenha/trocasenha.service';
 import { AutenticacaoService } from './../../service/autenticacao/autenticacao.service';
 import { environment } from './../../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-autenticacao',
@@ -11,9 +14,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class AutenticacaoComponent implements OnInit {
 
   environment = environment;
+  emailRedefinicao!: string;
   usuario: any = {};
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private service: AutenticacaoService) { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute,
+    private service: AutenticacaoService,
+    private modalService: NgbModal,
+    private trocasenhaService: TrocasenhaService,
+    private toastr: ToastrService) { }
 
   redirect() {
     this.router.navigate(['/restrito', 'home']);
@@ -22,6 +30,17 @@ export class AutenticacaoComponent implements OnInit {
   ngOnInit(): void {
     if(this.service.getToken() != null)
       this.redirect();
+  }
+
+  open(content: any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.trocasenhaService.solicitar(this.emailRedefinicao, this.activatedRoute.snapshot.params.perfil)
+        .subscribe(x => {
+          this.toastr.success("Solicitação de troca de senha enviada por e-mail.");
+        })
+    }, (reason) => {
+      console.log("NOK");
+    });
   }
 
   autenticar() {
