@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
-    <a class="navbar-brand" href="#">SGBE</a>
+    <a class="navbar-brand" href="#">Olá, {{usuarioLogado.username}}</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -27,13 +27,15 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['interno']">Professores</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Alunos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Agenda</a>
-        </li>
       </ul>
+      <ul class="nav navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="[]" (click)="deslogar()">Sair</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link badge badge-primary"></a>
+        </li>
+    </ul>
     </div>
   </div>
 </nav>

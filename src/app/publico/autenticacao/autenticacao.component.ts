@@ -1,3 +1,4 @@
+import { AutenticacaoService } from './../../service/autenticacao/autenticacao.service';
 import { environment } from './../../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,14 +11,29 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class AutenticacaoComponent implements OnInit {
 
   environment = environment;
+  usuario: any = {};
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private service: AutenticacaoService) { }
+
+  redirect() {
+    this.router.navigate(['/restrito', 'home']);
+  }
 
   ngOnInit(): void {
+    if(this.service.getToken() != null)
+      this.redirect();
   }
 
   autenticar() {
-    this.router.navigateByUrl('/restrito/home');
+    this.service.autenticar(this.usuario.login, this.usuario.senha, this.activatedRoute.snapshot.params.perfil)
+      .subscribe((x: any) => {
+        this.service.armazenarToken(x.token);
+        this.redirect();
+      });
+  }
+
+  get modulo() {
+    return this.activatedRoute.snapshot.params.perfil;
   }
 
 }

@@ -11,7 +11,7 @@ import { TrocasenhaComponent } from './trocasenha/trocasenha.component';
 
 let routes: Routes = [
   { path: '', component: PublicoComponent, children: [
-    { path: 'auth', component: AutenticacaoComponent },
+    { path: 'auth/:perfil', component: AutenticacaoComponent },
     { path: 'trocasenha/:id', component: TrocasenhaComponent }
   ]}
 ]
