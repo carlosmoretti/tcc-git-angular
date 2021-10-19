@@ -13,13 +13,11 @@ intercept(
         next: HttpHandler
       ): Observable<HttpEvent<any>> {
 
-        if(this.service.getToken() != null) {
-          req = req.clone({
-            setHeaders: {
-              Authorization: 'Bearer ' + this.service.getToken()
-            }
-          })
-        }
+        req = req.clone({
+          setHeaders: {
+            Authorization: 'Bearer ' + this.service.getToken()
+          }
+        })
 
         return next.handle(req).pipe(
             map((event: HttpEvent<any>) => {

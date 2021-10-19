@@ -16,6 +16,7 @@ import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarModule, LOADING_BAR_CONFIG } from '@ngx-loading-bar/core';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AutenticadoGuardService } from './guards/autenticado.guard';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     NgbTooltipModule
   ],
   providers: [
+    AutenticadoGuardService,
     { provide: LOADING_BAR_CONFIG, useValue: { latencyThreshold: 100 } },
     { provide: HTTP_INTERCEPTORS, useClass: AppHttpInterceptor, multi: true },
   ],
