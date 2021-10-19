@@ -1,3 +1,4 @@
+import { AppHttpInterceptor } from './interceptor/http.interceptor';
 import { SharedService } from './service/shared.service';
 import { PublicoModule } from './publico/publico.module';
 import { RestritoModule } from './restrito/restrito.module';
@@ -14,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarModule, LOADING_BAR_CONFIG } from '@ngx-loading-bar/core';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 @NgModule({
@@ -36,7 +38,8 @@ import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
     NgbTooltipModule
   ],
   providers: [
-    { provide: LOADING_BAR_CONFIG, useValue: { latencyThreshold: 100 } }
+    { provide: LOADING_BAR_CONFIG, useValue: { latencyThreshold: 100 } },
+    { provide: HTTP_INTERCEPTORS, useClass: AppHttpInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
