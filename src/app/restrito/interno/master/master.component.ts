@@ -15,13 +15,14 @@ export class MasterComponent implements OnInit, IGrid {
   grid!: GridDto;
 
   montarGrid(itens: Array<any>) : GridDto {
-    let colunas = ['ID', 'Nome', 'Sobrenome', 'Nome de Usuário', 'Matrícula',];
+    let colunas = ['ID', "Login",'Nome', 'Sobrenome','Nome de Usuário', 'Matrícula',];
     let valores = [];
 
     for(let item of itens) {
       let valoresNested = [];
 
       valoresNested.push(item.id);
+      valoresNested.push(item.login);
       valoresNested.push(item.nome);
       valoresNested.push(item.sobrenome);
       valoresNested.push(item.login);
@@ -34,7 +35,9 @@ export class MasterComponent implements OnInit, IGrid {
 
   ngOnInit(): void {
     this.service.get()
-      .subscribe(x => this.grid = this.montarGrid(x));
+      .subscribe(e => {
+        this.grid = this.montarGrid(e);
+      });
   }
 
 }

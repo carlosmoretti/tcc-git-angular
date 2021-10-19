@@ -1,5 +1,5 @@
 <div>
-  <div class="d-flex justify-content-end">
+  <div class="d-flex justify-content-end" *ngIf="config.valores != null">
     <button class="btn btn-primary btn-sm mb-2" [ngbTooltip]="'Incluir'" [routerLink]="config.inclusaoUrl"><i class="fas fa-plus-square"></i></button>
   </div>
   <ng-template #semDados>

@@ -9,6 +9,6 @@ import GenericService from '../generic.service';
 export class ResponsavelService extends GenericService<any> {
 
   constructor(public httpClient: HttpClient) {
-    super(httpClient, environment.apiUrl + '/responsavel');
+    super(httpClient, environment.apiUrl + 'responsavel');
   }
 }

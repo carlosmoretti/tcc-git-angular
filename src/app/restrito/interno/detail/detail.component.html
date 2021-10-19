@@ -1,13 +1,56 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a [routerLink]="['/restrito', 'responsavel']">Início</a></li>
+    <li class="breadcrumb-item"><a [routerLink]="['/restrito', 'interno']">Início</a></li>
     <li class="breadcrumb-item active" aria-current="page">Responsáveis</li>
   </ol>
 </nav>
 
-<div class="card">
-  <div class="card-header">{{labelTela}}</div>
+<div class="card mb-2">
   <div class="card-body">
-
+    <div *ngIf="model">
+    <form #formulario="ngForm">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label>Login</label>
+            <input required type="text" name="login" class="form-control" [(ngModel)]="model.login"/>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label>Senha</label>
+            <input required type="password" name="nome" class="form-control" [(ngModel)]="model.senha"/>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label>Nome</label>
+            <input required type="text" name="nome" class="form-control" [(ngModel)]="model.nome"/>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label>Sobrenome</label>
+            <input required type="text" name="sobrenome" class="form-control" [(ngModel)]="model.sobrenome" />
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label>Data de Inclusão</label>
+            <input required type="date" name="dataInclusao" class="form-control" [(ngModel)]="model.dataInclusao" />
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label>Matrícula</label>
+            <input type="text" name="matricula" class="form-control mb-2" disabled [(ngModel)]="model.matricula">
+          </div>
+        </div>
+      </div>
+    </form>
+    <div>
+    </div>
+    <button class="btn btn-sm btn-success mt-3" [ngClass]="{ 'btn-disabled' : !formulario.valid }" (click)="salvar()">Salvar</button>
   </div>
+</div>
 </div>

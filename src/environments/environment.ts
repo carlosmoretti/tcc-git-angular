@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   nomeSistema: 'SGBE',
   descricaoSistema: 'Sistema de Gestão e Bem Estar do Aluno',
-  apiUrl: 'http://localhost:4200/api/'
+  apiUrl: 'http://localhost:3000/'
 };
 
 /*
