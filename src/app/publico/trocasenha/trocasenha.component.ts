@@ -23,9 +23,9 @@ export class TrocasenhaComponent implements OnInit {
 
   enviar() {
     this.service.enviar(this.route.snapshot.params.id, this.trocaSenha)
-      .subscribe(x => {
+      .subscribe((x: any) => {
         this.toastrService.success("Troca de senha efetuada com sucesso.");
-        this.navigate.navigate(['publico', 'auth', 'responsavel']);
+        this.navigate.navigate(['publico', 'auth', x.modulo]);
       });
   }
 

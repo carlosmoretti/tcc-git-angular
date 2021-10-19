@@ -1,4 +1,3 @@
-import { AutenticacaoInterceptor } from './interceptor/autenticacao.interceptor';
 import { AppHttpInterceptor } from './interceptor/http.interceptor';
 import { SharedService } from './service/shared.service';
 import { PublicoModule } from './publico/publico.module';
@@ -41,7 +40,6 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
   providers: [
     { provide: LOADING_BAR_CONFIG, useValue: { latencyThreshold: 100 } },
     { provide: HTTP_INTERCEPTORS, useClass: AppHttpInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: AutenticacaoInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })
