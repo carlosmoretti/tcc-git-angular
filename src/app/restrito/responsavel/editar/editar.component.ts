@@ -53,7 +53,7 @@ export class EditarComponent implements OnInit {
       .subscribe(e => this.toastrService.success("Informações do responsável salvas com sucesso."));
     } else {
       return this.service.put(this.responsavel)
-      .subscribe(e => this.toastrService.error("Informações do responsável salvas com sucesso."));
+      .subscribe(e => this.toastrService.success("Informações do responsável salvas com sucesso."));
     }
   }
 

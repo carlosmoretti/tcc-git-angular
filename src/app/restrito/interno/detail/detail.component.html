@@ -6,6 +6,7 @@
 </nav>
 
 <div class="card mb-2">
+  <div class="card-header">{{labelTela}}</div>
   <div class="card-body">
     <div *ngIf="model">
     <form #formulario="ngForm">
@@ -44,6 +45,12 @@
           <div class="form-group">
             <label>Matrícula</label>
             <input type="text" name="matricula" class="form-control mb-2" disabled [(ngModel)]="model.matricula">
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control mb-2" [(ngModel)]="model.email">
           </div>
         </div>
       </div>
