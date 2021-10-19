@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: 'restrito', loadChildren: () => import('./restrito/restrito.module').then(e => e.RestritoModule) },
   { path: 'publico', loadChildren: () => import('./publico/publico.module').then(e => e.PublicoModule) },
+  { path: 'forbidden', component: NaoencontradoComponent },
   { path: '**', component: NaoencontradoComponent }
 ];
 
