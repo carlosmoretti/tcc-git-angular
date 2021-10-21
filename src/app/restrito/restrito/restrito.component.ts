@@ -1,3 +1,4 @@
+import { RoleEnum } from './../../enum/role.enum';
 import { AutenticacaoService } from './../../service/autenticacao/autenticacao.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -25,4 +26,15 @@ export class RestritoComponent implements OnInit {
     return this.service.getUsuarioLogado();
   }
 
+  get menus() {
+    let menuItem = [
+      { titulo: 'Home', url: 'home', perfis: ['interno', 'responsavel'] },
+      { titulo: 'Responsáveis', url: 'responsavel', perfis: ['interno'] },
+      { titulo: 'Turmas', url: 'turmas', perfis: ['interno'] },
+      { titulo: 'Professores', url: 'interno', perfis: ['interno'] },
+    ]
+
+    let usuarioLogado = this.service.getUsuarioLogado().role;
+    return menuItem.filter(x => x.perfis.includes(usuarioLogado))
+  }
 }

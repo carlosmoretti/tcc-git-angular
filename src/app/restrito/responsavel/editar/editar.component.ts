@@ -58,6 +58,7 @@ export class EditarComponent implements OnInit {
   }
 
   adicionarAlunoHandler(e: any) {
+    console.log(e);
     this.visaoInclusao = false;
 
     if(this.responsavel.alunos == null)
@@ -65,8 +66,6 @@ export class EditarComponent implements OnInit {
 
     this.responsavel.alunos.push(e);
     this.usuarioSelecionado = null;
-
-    this.responsavel.alunos.splice(this.alunoCarregadoAlteracao, 1);
   }
 
   editarUsuario(item: any, i: number) {
