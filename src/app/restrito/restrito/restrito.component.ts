@@ -32,6 +32,7 @@ export class RestritoComponent implements OnInit {
       { titulo: 'Responsáveis', url: 'responsavel', perfis: ['interno'] },
       { titulo: 'Turmas', url: 'turmas', perfis: ['interno'] },
       { titulo: 'Professores', url: 'interno', perfis: ['interno'] },
+      { titulo: 'Agenda', url: 'agenda', perfis: ['interno'] }
     ]
 
     let usuarioLogado = this.service.getUsuarioLogado().role;

@@ -33,6 +33,13 @@
         <label>Matrícula</label>
         <input [disabled]="true" type="text" class="form-control" [(ngModel)]="item.matricula" name="matricula" required/>
       </div>
+      <div class="form-group">
+        <label>Professor Responsável</label>
+        <select required class="form-control w-25" [(ngModel)]="item.professorResponsavel.id" name="professorResponsavel">
+          <option disabled selected>Selecione</option>
+          <option *ngFor="let item of professores$ | async" [ngValue]="item.id">{{item.nome}}</option>
+        </select>
+      </div>
 
       <div class="card mb-2">
         <div class="card-header">Alunos</div>

@@ -9,7 +9,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { FeedbackComponent } from './feedback/feedback.component';
-import { AgendasComponent } from './agendas/agendas.component';
 import { ResponsavelComponent } from './responsavel/responsavel.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EditarComponent } from './responsavel/editar/editar.component';
@@ -28,7 +27,8 @@ let routes: Routes = [
     { path: 'turmas', component: TurmaComponent },
     { path: 'turmas/editar/:id', component: EditarTurmaComponent },
     { path: 'turmas/novo', component: EditarTurmaComponent },
-    { path: 'interno', loadChildren: () => import('./interno/interno.module').then(x => x.InternoModule) }
+    { path: 'interno', loadChildren: () => import('./interno/interno.module').then(x => x.InternoModule) },
+    { path: 'agenda', loadChildren: () => import('./agenda/agenda.module').then(x => x.AgendaModule )}
   ]}
 ]
 
@@ -37,7 +37,6 @@ let routes: Routes = [
     HomeComponent,
     RestritoComponent,
     FeedbackComponent,
-    AgendasComponent,
     ResponsavelComponent,
     EditarComponent,
     IncluiralunoComponent,
@@ -56,7 +55,6 @@ let routes: Routes = [
     InternoModule
   ],
   providers: [
-    TurmaService,
     SharedService
   ]
 })

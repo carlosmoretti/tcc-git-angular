@@ -20,7 +20,6 @@ let route: Routes = [
     DetailComponent
   ],
   providers: [
-    InternoService
   ],
   imports: [
     RouterModule.forChild(route),

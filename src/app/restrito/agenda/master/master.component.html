@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-header">Agenda</div>
+  <div class="card-body">
+    <div class="card">
+      <div class="card-header">Suas Turmas</div>
+      <div class="card-body">
+        <div class="alert alert-info">Clique na turma para iniciar o preenchimento.</div>
+        <div class="row">
+          <div class="col-sm-2">
+            <div class="p-2 bg-info br text-white pointer" *ngFor="let item of turmas$ | async" [routerLink]="['preencher', item.id]">{{item.matricula}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,5 @@
+import { InternoService } from './../../../service/interno/interno.service';
+import { Observable } from 'rxjs';
 import { SharedService } from './../../../service/shared.service';
 import { AlunoService } from './../../../service/aluno/aluno.service';
 import { TurmaService } from '../../../service/turma/turma.service';
@@ -18,13 +20,17 @@ export class EditarTurmaComponent implements OnInit {
     private modalService: NgbModal,
     private alunoService: AlunoService,
     private toastr: ToastrService,
-    private sharedService: SharedService) { }
+    private sharedService: SharedService,
+    private professorService: InternoService) { }
 
   item: any = {};
   labelTela: string = 'Incluir Turma';
   matriculaAlunoModal!: string;
+  professores$!: Observable<any>;
 
   ngOnInit(): void {
+    this.professores$ = this.professorService.get();
+
     if(this.route.snapshot.params.id != null) {
       this.service.getById(this.route.snapshot.params.id)
         .subscribe(e => this.item = e);
@@ -32,6 +38,7 @@ export class EditarTurmaComponent implements OnInit {
       this.labelTela = 'Editar Turma'
     } else {
       this.item.matricula = this.sharedService.criarMatricula('T');
+      this.item.professorResponsavel = { };
     }
   }
 

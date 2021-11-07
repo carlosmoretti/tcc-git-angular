@@ -1,0 +1,13 @@
+<div class="card">
+  <div class="card-header">Preencher agenda de alunos</div>
+  <div class="card-body">
+    <ng-container *ngFor="let item of turma.alunos">
+      <div class="card mb-2">
+        <div class="card-header">{{item.nome}} {{item.sobrenome}}</div>
+        <div class="card-body">
+          <textarea class="form-control"></textarea>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

@@ -15,14 +15,13 @@ export class MasterComponent implements OnInit, IGrid {
   grid!: GridDto;
 
   montarGrid(itens: Array<any>) : GridDto {
-    let colunas = ['ID', "Login",'Nome', 'Sobrenome','Nome de Usuário', 'Matrícula',];
+    let colunas = ['ID', 'Nome', 'Sobrenome','Nome de Usuário', 'Matrícula',];
     let valores = [];
 
     for(let item of itens) {
       let valoresNested = [];
 
       valoresNested.push(item.id);
-      valoresNested.push(item.login);
       valoresNested.push(item.nome);
       valoresNested.push(item.sobrenome);
       valoresNested.push(item.login);

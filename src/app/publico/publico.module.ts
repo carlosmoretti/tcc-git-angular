@@ -28,6 +28,6 @@ let routes: Routes = [
     FormsModule,
     RouterModule.forChild(routes)
   ],
-  providers: [ TrocasenhaService]
+  providers: []
 })
 export class PublicoModule { }

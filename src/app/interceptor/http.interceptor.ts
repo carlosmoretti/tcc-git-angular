@@ -19,6 +19,8 @@ intercept(
           }
         })
 
+        console.log("interceptado")
+
         return next.handle(req).pipe(
             map((event: HttpEvent<any>) => {
               if (event instanceof HttpResponse) {
