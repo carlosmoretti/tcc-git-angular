@@ -1,11 +1,38 @@
 <div class="card">
   <div class="card-header">Preencher agenda de alunos</div>
-  <div class="card-body">
-    <ng-container *ngFor="let item of turma.alunos">
+  <div class="card-body" *ngIf="turma?.alunos">
+    <ng-container *ngFor="let item of turma.alunos; let alunoIndex = index">
       <div class="card mb-2">
         <div class="card-header">{{item.nome}} {{item.sobrenome}}</div>
         <div class="card-body">
-          <textarea class="form-control"></textarea>
+          <div class="row">
+            <div class="col-sm-8">
+              <div>
+                <quill-editor [(ngModel)]="item.html" [placeholder]="'Preencha a agenda.'"></quill-editor>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <h3>Definições</h3>
+              <div *ngFor="let opt of item.variaveis">
+                <div class="form-group">
+                  <label>{{opt.titulo}}</label>
+                  <select class="form-control" [(ngModel)]="opt.selecionado" *ngIf="opt.opcoes.length > 0; else campoTexto">
+                    <option disabled selected>Selecione</option>
+                    <ng-container *ngFor="let opcao of opt.opcoes; let i = index">
+                      <option [ngValue]="opcao">{{opcao}}</option>
+                    </ng-container>
+                  </select>
+                  <ng-template #campoTexto>
+                    <textarea class="form-control" [(ngModel)]="opt.selecionado"></textarea>
+                  </ng-template>
+                </div>
+              </div>
+              <div class="d-flex">
+                <button class="btn btn-sm btn-primary mr-2" (click)="salvarInformacoesAluno(alunoIndex)">Salvar</button>
+                <button class="btn btn-sm btn-danger mr-2" (click)="reiniciarAluno(alunoIndex)">Reiniciar</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </ng-container>

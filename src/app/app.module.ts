@@ -17,6 +17,7 @@ import { LoadingBarModule, LOADING_BAR_CONFIG } from '@ngx-loading-bar/core';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AutenticadoGuardService } from './guards/autenticado.guard';
+import { QuillEditorBase, QuillModule } from 'ngx-quill';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { AutenticadoGuardService } from './guards/autenticado.guard';
     LoadingBarModule,
     LoadingBarHttpClientModule,
     LoadingBarRouterModule,
-    NgbTooltipModule
+    NgbTooltipModule,
+    QuillModule.forRoot()
   ],
   providers: [
     AutenticadoGuardService,
