@@ -1,18 +1,27 @@
 <div class="card">
   <div class="card-header">Preencher agenda de alunos</div>
   <div class="card-body" *ngIf="turma?.alunos">
+    <div class="form-check mb-2">
+      <input [(ngModel)]="modoVisualizacao" class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+      <label class="form-check-label" for="flexCheckChecked">
+        Modo de visualização
+      </label>
+    </div>
     <ng-container *ngFor="let item of turma.alunos; let alunoIndex = index">
       <div class="card mb-2">
-        <div class="card-header">{{item.nome}} {{item.sobrenome}}</div>
-        <div class="card-body">
+        <div class="card-header d-flex justify-content-between align-items-center" (click)="item.visivel = !item.visivel" [ngClass]="{
+           'valido': item.status,
+           'invalido': !item.status
+        }">
+          <div class="font-weight-bold">{{item.nome}} {{item.sobrenome}}</div>
+          <i class="fa" aria-hidden="true" [ngClass]="{
+            'fa-check' : item.status,
+            'fa-times' : !item.status
+          }"></i>
+        </div>
+        <div class="card-body" *ngIf="item.visivel">
           <div class="row">
-            <div class="col-sm-8">
-              <div>
-                <quill-editor [(ngModel)]="item.html" [placeholder]="'Preencha a agenda.'"></quill-editor>
-                {{item.html}}
-              </div>
-            </div>
-            <div class="col-sm-4">
+            <div class="col-sm-12" *ngIf="!modoVisualizacao">
               <h3>Definições</h3>
               <div *ngFor="let opt of item.variaveis">
                 <div class="form-group">
@@ -31,6 +40,11 @@
               <div class="d-flex">
                 <button class="btn btn-sm btn-primary mr-2" (click)="salvarInformacoesAluno(alunoIndex)">Salvar</button>
                 <button class="btn btn-sm btn-danger mr-2" (click)="reiniciarAluno(alunoIndex)">Reiniciar</button>
+              </div>
+            </div>
+            <div class="col-sm-12" *ngIf="modoVisualizacao">
+              <div>
+                <quill-editor [(ngModel)]="item.html" [placeholder]="'Preencha a agenda.'"></quill-editor>
               </div>
             </div>
           </div>

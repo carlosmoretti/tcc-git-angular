@@ -16,6 +16,7 @@ export class PreenchimnetoComponent implements OnInit {
   layoutAgenda: any;
 
   alunosBackup!: Array<any>;
+  modoVisualizacao: boolean = false;
 
   ngOnInit(): void {
 
@@ -52,6 +53,8 @@ export class PreenchimnetoComponent implements OnInit {
     })
 
     this.turma.alunos[indexAluno].html = alunoHtml;
+    this.turma.alunos[indexAluno].status = true;
+    this.turma.alunos[indexAluno].visivel = false;
   }
 
   inicializaVariaveis(alunos: Array<any>) {
