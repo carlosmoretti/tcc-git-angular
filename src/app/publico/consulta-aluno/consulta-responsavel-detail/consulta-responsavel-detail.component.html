@@ -1,0 +1,19 @@
+<div class="d-flex align-items-center justify-content-center h-100">
+  <div class="card">
+    <div class="card-header">Selecione o aluno</div>
+    <div class="card-body">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item" aria-current="page"><a href="#" [routerLink]="" (click)="voltar()">Voltar</a></li>
+        </ol>
+      </nav>
+      <div class="row">
+        <div class="col-sm-12 mb-2" *ngFor="let item of alunos" [routerLink]="[item.matricula]">
+          <div class="bg-info p-2">
+            {{item.nome}} {{item.sobrenome}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,9 @@
+import { AgendaService } from './../../../service/agenda/agenda.service';
 import { ConfiguracaoService } from './../../../service/configuracao/configuracao.service';
 import { TurmaService } from './../../../service/turma/turma.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-preenchimneto',
@@ -10,7 +12,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PreenchimnetoComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute, private turmaService: TurmaService, private configuracaoService: ConfiguracaoService) { }
+  constructor(private activatedRoute: ActivatedRoute,
+    private turmaService: TurmaService,
+    private configuracaoService: ConfiguracaoService,
+    private agendaService: AgendaService,
+    private toastrService: ToastrService) { }
 
   turma: any;
   layoutAgenda: any;
@@ -57,6 +63,13 @@ export class PreenchimnetoComponent implements OnInit {
     this.turma.alunos[indexAluno].visivel = false;
   }
 
+  salvar() {
+    this.agendaService.salvarComTurma(this.activatedRoute.snapshot.params.id, this.turma.alunos)
+      .subscribe(x => {
+        this.toastrService.success("Agenda salva com sucesso para a turma.")
+      });
+  }
+
   inicializaVariaveis(alunos: Array<any>) {
     let modeloDefault = JSON.parse(JSON.stringify(this.turma.alunos[0].html));
     const regexPattern = /{(.|\n)*?}/gm;
@@ -81,5 +94,9 @@ export class PreenchimnetoComponent implements OnInit {
         })
       })
     })
+  }
+
+  get existeAlunoPendente() {
+    return this.turma.alunos.some((e: any) => !e.status);
   }
 }

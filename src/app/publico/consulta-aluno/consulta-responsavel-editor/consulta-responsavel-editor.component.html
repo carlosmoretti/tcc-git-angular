@@ -1,0 +1,59 @@
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Agenda</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <quill-editor [(ngModel)]="agendaModal" [disabled]="true"></quill-editor>
+  </div>
+</ng-template>
+
+
+<div class="d-flex align-items-center justify-content-center h100">
+  <div class="card">
+    <div class="card-header">{{aluno.nome}} {{aluno.sobrenome}}</div>
+    <div class="card-body">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item" aria-current="page"><a href="#" [routerLink]="" (click)="voltar()">Voltar</a></li>
+        </ol>
+      </nav>
+
+      <div class="form-row">
+        <div class="col-sm-6 mb-2">
+          <label>Data Inicial</label>
+          <input type="date" class="form-control" [(ngModel)]="dataInicial" name="dataInicial">
+        </div>
+        <div class="col-sm-6">
+          <label>Data Final</label>
+          <input type="date" class="form-control" [(ngModel)]="dataFinal" name="dataInicial">
+        </div>
+        <div class="col-sm-12 mt-2">
+          <button class="w-100 btn btn-primary" (click)="consultar()">Consultar</button>
+        </div>
+      </div>
+
+      <table class="table table-striped mt-2">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Turma</th>
+            <th>Professor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of resultado" class="pointer" (click)="abrirAgenda(content, item)">
+            <td>{{item.dataEscrita | date}}</td>
+            <td>{{item.turma.matricula}}</td>
+            <td>{{item.professor.nome}} {{item.professor.sobrenome}}</td>
+          </tr>
+        </tbody>
+
+      </table>
+
+    </div>
+  </div>
+</div>

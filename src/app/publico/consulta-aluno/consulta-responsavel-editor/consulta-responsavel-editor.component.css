@@ -1,0 +1,19 @@
+.card {
+  margin: 1rem;
+}
+
+.h100 {
+  height: 100vh !important;
+}
+
+.bg-info {
+  font-size: 1.3rem;
+  border-radius: 5px;
+  color: #FFF;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.pointer {
+  cursor: pointer;
+}

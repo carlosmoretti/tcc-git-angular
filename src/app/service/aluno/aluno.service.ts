@@ -1,3 +1,4 @@
+
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
@@ -19,5 +20,20 @@ export class AlunoService extends GenericService<any> {
     params = params.append('matricula', matricula);
 
     return this.httpClient.get(this.API_URL + '/matricula', { params });
+  }
+
+  alunosPorMatriculaResponsavel(matricula: string) {
+    return this.httpClient.get(environment.apiUrl + '/consulta-responsavel/' + matricula);
+  }
+
+  private getDataAsString(data: Date) {
+    return "'" + new Date(data).toISOString().split('T')[0] + "'";
+  }
+
+  agendaPorAlunoFiltroData(matriculaAluno: string, dataInicio: Date, dataFim: Date) {
+    let params = new HttpParams();
+    params = params.append('dataInicio', this.getDataAsString(dataInicio));
+    params = params.append('dataFim', this.getDataAsString(dataFim));
+    return this.httpClient.get(environment.apiUrl + '/consulta-responsavel/agenda/' + matriculaAluno, { params });
   }
 }

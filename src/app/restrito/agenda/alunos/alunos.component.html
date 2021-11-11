@@ -1,0 +1,43 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Início</a></li>
+    <li class="breadcrumb-item" aria-current="page"><a href="" (click)="backLocation()" [routerLink]="[]">Agenda</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{agenda.turma.matricula}}</li>
+  </ol>
+</nav>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Alteração de Agenda</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <quill-editor [(ngModel)]="registroSelecionadoModal.conteudo" name="html"></quill-editor>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Salvar</button>
+  </div>
+</ng-template>
+
+<div class="card">
+  <div class="card-header">Registros de Agenda - Turma {{agenda.turma.matricula}} - {{agenda.dataEscrita | date: 'dd/MM/yyyy'}}</div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-sm-2" *ngFor="let item of alunos">
+        <div class="p-2 bg-info br">
+          <div class="d-flex justify-content-between align-items-center" (click)="abrirModalEdicao(content, item)">
+            <div>{{item.aluno.nome}} {{item.aluno.sobrenome}}</div>
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

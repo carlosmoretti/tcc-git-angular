@@ -45,11 +45,13 @@
             <div class="col-sm-12" *ngIf="modoVisualizacao">
               <div>
                 <quill-editor [(ngModel)]="item.html" [placeholder]="'Preencha a agenda.'"></quill-editor>
+                {{item.html}}
               </div>
             </div>
           </div>
         </div>
       </div>
     </ng-container>
+    <button class="btn btn-info btn-sm" [disabled]="existeAlunoPendente" (click)="salvar()">Salvar</button>
   </div>
 </div>
