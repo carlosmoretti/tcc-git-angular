@@ -36,6 +36,13 @@
           </div>
         </div>
         <div class="col-sm-3">
+          <label>Nível</label>
+          <select class="form-control" name="nivel" [(ngModel)]="model.nivel" [compareWith]="compareNivel" required>
+            <option [ngValue]="null" disabled selected>Selecione</option>
+            <option *ngFor="let item of niveis$ | async" [ngValue]="item">{{item.nome}}</option>
+          </select>
+        </div>
+        <div class="col-sm-3">
           <div class="form-group">
             <label>Matrícula</label>
             <input type="text" name="matricula" class="form-control mb-2" disabled [(ngModel)]="model.matricula">

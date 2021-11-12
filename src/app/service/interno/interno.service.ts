@@ -11,4 +11,8 @@ export class InternoService extends GenericService<any> {
   constructor(public http: HttpClient) {
     super(http, environment.apiUrl + 'interno')
   }
+
+  niveis() {
+    return this.httpClient.get(environment.apiUrl + 'interno/niveis');
+  }
 }

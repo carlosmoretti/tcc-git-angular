@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -21,9 +22,19 @@ export class DetailComponent implements OnInit {
   labelTela!: string;
   model : any;
   id !: number;
+  niveis$!: Observable<any>;
+
+  compareNivel(nivel1: any, nivel2: any) {
+    if(nivel1 != null && nivel2 != null)
+      return nivel1.id == nivel2.id;
+
+    return false;
+  }
 
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params.id;
+    this.niveis$ = this.service.niveis();
+
     if(this.id != null) {
       this.labelTela = 'Editar Professor'
       this.service.getById(this.id).subscribe(e =>

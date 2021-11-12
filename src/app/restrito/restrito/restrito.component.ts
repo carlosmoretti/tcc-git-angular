@@ -28,15 +28,18 @@ export class RestritoComponent implements OnInit {
 
   get menus() {
     let menuItem = [
-      { titulo: 'Home', url: 'home', perfis: ['interno', 'responsavel'] },
-      { titulo: 'Responsáveis', url: 'responsavel', perfis: ['interno'] },
-      { titulo: 'Turmas', url: 'turmas', perfis: ['interno'] },
-      { titulo: 'Professores', url: 'interno', perfis: ['interno'] },
-      { titulo: 'Agenda', url: 'agenda', perfis: ['interno'] },
-      { titulo: 'Aluno', url: 'aluno', perfis: ['interno'] }
+      { titulo: 'Home', url: 'home', perfis: ['interno', 'responsavel'], nivel: 1 },
+      { titulo: 'Responsáveis', url: 'responsavel', perfis: ['interno'], nivel: 3 },
+      { titulo: 'Turmas', url: 'turmas', perfis: ['interno'], nivel: 2 },
+      { titulo: 'Professores', url: 'interno', perfis: ['interno'], nivel: 2 },
+      { titulo: 'Agenda', url: 'agenda', perfis: ['interno'], nivel: 1 },
+      { titulo: 'Aluno', url: 'aluno', perfis: ['interno'], nivel: 2 }
     ]
 
-    let usuarioLogado = this.service.getUsuarioLogado().role;
-    return menuItem.filter(x => x.perfis.includes(usuarioLogado))
+    let usuarioLogado = this.service.getUsuarioLogado();
+    let usuarioLogadoRole = usuarioLogado.role;
+    let usuarioLogadoNivel = usuarioLogado.nivel;
+
+    return menuItem.filter(x => x.perfis.includes(usuarioLogadoRole) && usuarioLogadoNivel >= x.nivel);
   }
 }
