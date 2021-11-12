@@ -11,15 +11,20 @@
     <div class="card  mb-2">
       <div class="card-header">Suas Turmas</div>
       <div class="card-body">
-        <div class="row">
-          <div class="col-sm-2">
+        <div class="form-row">
+          <div class="col-sm-2 mb-2" *ngFor="let item of turmas$ | async">
             <!-- [routerLink]="['preencher', item.id]" -->
-            <div class="p-2 bg-info br text-white pointer" *ngFor="let item of turmas$ | async" (click)="agendaPorTurma(item.id)">{{item.matricula}}</div>
+            <div class="p-2 bg-info br text-white pointer" (click)="agendaPorTurma(item.id)" >{{item.matricula}}</div>
           </div>
         </div>
       </div>
     </div>
-
-    <app-grid [config]="grid" [service]="agendaService"></app-grid>
+    <div class="form-row">
+      <div class="col-sm-2" *ngFor="let item of agendas$ | async">
+        <div class="bg-primary br text-white p-2 pointer" [routerLink]="['editar', item.id]">
+          {{item.dataEscrita | date: 'dd/MM/yyyy'}}
+        </div>
+      </div>
+    </div>
   </div>
 </div>

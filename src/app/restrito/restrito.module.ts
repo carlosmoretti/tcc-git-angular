@@ -17,10 +17,12 @@ import { IncluiralunoComponent } from './responsavel/incluiraluno/incluiraluno.c
 import { TurmaComponent } from './turma/turma.component';
 import { EditarTurmaComponent } from './turma/editarTurma/editarTurma.component';
 import { NgbModalModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { AlunoMasterComponent } from './aluno/aluno-master/aluno-master.component';
 
 let routes: Routes = [
   { path: '', component: RestritoComponent, children: [
     { path: 'home', component: HomeComponent },
+    { path: 'aluno', component: AlunoMasterComponent },
     { path: 'responsavel', component: ResponsavelComponent, },
     { path: 'responsavel/editar/:id', component: EditarComponent },
     { path: 'responsavel/novo', component: EditarComponent },
@@ -41,7 +43,8 @@ let routes: Routes = [
     EditarComponent,
     IncluiralunoComponent,
     TurmaComponent,
-    EditarTurmaComponent
+    EditarTurmaComponent,
+    AlunoMasterComponent
   ],
   imports: [
     CommonModule,

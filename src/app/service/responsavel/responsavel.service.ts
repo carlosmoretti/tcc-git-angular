@@ -11,4 +11,8 @@ export class ResponsavelService extends GenericService<any> {
   constructor(public httpClient: HttpClient) {
     super(httpClient, environment.apiUrl + 'responsavel');
   }
+
+  alunosPorResponsavel(id: number) {
+    return this.httpClient.get(environment.apiUrl + 'responsavel/' + id + '/alunos');
+  }
 }

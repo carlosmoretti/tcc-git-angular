@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { AgendaService } from './../../../service/agenda/agenda.service';
 import { ConfiguracaoService } from './../../../service/configuracao/configuracao.service';
 import { TurmaService } from './../../../service/turma/turma.service';
@@ -16,7 +17,8 @@ export class PreenchimnetoComponent implements OnInit {
     private turmaService: TurmaService,
     private configuracaoService: ConfiguracaoService,
     private agendaService: AgendaService,
-    private toastrService: ToastrService) { }
+    private toastrService: ToastrService,
+    private location: Location) { }
 
   turma: any;
   layoutAgenda: any;
@@ -66,6 +68,7 @@ export class PreenchimnetoComponent implements OnInit {
   salvar() {
     this.agendaService.salvarComTurma(this.activatedRoute.snapshot.params.id, this.turma.alunos)
       .subscribe(x => {
+        this.location.back();
         this.toastrService.success("Agenda salva com sucesso para a turma.")
       });
   }

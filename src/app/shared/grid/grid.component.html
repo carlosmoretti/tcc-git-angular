@@ -1,5 +1,11 @@
 <div *ngIf="config">
-  <div class="d-flex justify-content-end">
+  <div class="d-flex justify-content-between">
+    <div class="input-group mb-3 w-25">
+      <input type="text" class="form-control form-control-sm" [(ngModel)]="keyword" placeholder="Busca por palavra chave.">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary btn-sm" type="button" (click)="pesquisarKeyword()">Pesquisar</button>
+      </div>
+    </div>
     <button class="btn btn-primary btn-sm mb-2" [ngbTooltip]="'Incluir'" [routerLink]="config.inclusaoUrl"><i class="fas fa-plus-square"></i></button>
   </div>
   <ng-template #semDados>
@@ -28,6 +34,11 @@
           </tr>
         </tbody>
       </table>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination float-right">
+          <li class="page-item" [ngClass]="{ 'active' : PAGINA_SELECIONADA == i + 1 }" (click)="changePage(i + 1)" *ngFor="let item of [].constructor(config.paginateConfig.totalPages); let i = index"><a class="page-link" [routerLink]="">{{i + 1}}</a></li>
+        </ul>
+      </nav>
     </ng-container>
   </div>
 </div>

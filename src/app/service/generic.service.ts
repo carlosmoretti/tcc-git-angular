@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 export default class GenericService<T> {
   constructor(public httpClient: HttpClient, public apiUrl: string) {
@@ -22,5 +22,16 @@ export default class GenericService<T> {
 
   delete(id: number) {
     return this.httpClient.delete(this.apiUrl + '/' + id);
+  }
+
+  paginate(page: number, itensPerPage: number, keyword: string) {
+    let params = new HttpParams();
+    params = params.append('page', page.toString());
+    params = params.append('itensPerPage', itensPerPage.toString());
+
+    if(keyword != null)
+      params = params.append('keyword', keyword);
+
+    return this.httpClient.get(this.apiUrl + '/paginate', { params });
   }
 }

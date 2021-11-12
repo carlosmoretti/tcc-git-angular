@@ -27,7 +27,7 @@ export class AlunoService extends GenericService<any> {
   }
 
   private getDataAsString(data: Date) {
-    return "'" + new Date(data).toISOString().split('T')[0] + "'";
+    return new Date(data).toISOString().split('T')[0]
   }
 
   agendaPorAlunoFiltroData(matriculaAluno: string, dataInicio: Date, dataFim: Date) {

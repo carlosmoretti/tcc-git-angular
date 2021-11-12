@@ -8,38 +8,6 @@ import IGrid from 'src/app/shared/grid/grid.interface';
   templateUrl: './responsavel.component.html',
   styleUrls: ['./responsavel.component.css']
 })
-export class ResponsavelComponent
-  implements OnInit, IGrid {
-
+export class ResponsavelComponent {
   constructor(public service: ResponsavelService) { }
-
-  grid!: GridDto;
-
-  ngOnInit(): void {
-    this.service.get()
-      .subscribe(e => {
-        this.grid = this.montarGrid(e);
-      });
-  }
-
-  montarGrid(itens: Array<any>) : GridDto {
-    let colunas = ['ID', 'Nome', 'Sobrenome', 'Nome de Usuário', 'Matrícula', 'Qtde. Alunos Associados'];
-    let valores = [];
-
-    for(let item of itens) {
-      let valoresNested = [];
-
-      valoresNested.push(item.id);
-      valoresNested.push(item.nome);
-      valoresNested.push(item.sobrenome);
-      valoresNested.push(item.login);
-      valoresNested.push(item.matricula);
-      valoresNested.push(item.alunos.length + ' <i class="fas fa-user"></i>');
-
-      valores.push(valoresNested);
-    }
-
-    return new GridDto(colunas, valores, 'novo', 'editar');
-  }
-
 }
