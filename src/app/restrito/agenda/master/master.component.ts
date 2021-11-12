@@ -27,6 +27,7 @@ export class MasterComponent implements OnInit {
 
   agendaPorTurma(turma: number) {
     this.turmaSelecionada = turma;
+    console.log(turma);
     this.agendas$ = this.agendaService.agendaPorTurma(turma)
   }
 }

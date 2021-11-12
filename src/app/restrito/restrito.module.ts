@@ -1,3 +1,4 @@
+import { QuillModule } from 'ngx-quill';
 import { SharedService } from './../service/shared.service';
 import { TurmaService } from './../service/turma/turma.service';
 import { SharedModule } from './../shared/shared.module';
@@ -18,6 +19,9 @@ import { TurmaComponent } from './turma/turma.component';
 import { EditarTurmaComponent } from './turma/editarTurma/editarTurma.component';
 import { NgbModalModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlunoMasterComponent } from './aluno/aluno-master/aluno-master.component';
+import { ConfiguracaoMasterComponent } from './configuracao/configuracao-master/configuracao-master.component';
+import { componentFactoryName } from '@angular/compiler';
+import { ConfiguracaoDetailComponent } from './configuracao/configuracao-detail/configuracao-detail.component';
 
 let routes: Routes = [
   { path: '', component: RestritoComponent, children: [
@@ -30,7 +34,10 @@ let routes: Routes = [
     { path: 'turmas/editar/:id', component: EditarTurmaComponent },
     { path: 'turmas/novo', component: EditarTurmaComponent },
     { path: 'interno', loadChildren: () => import('./interno/interno.module').then(x => x.InternoModule) },
-    { path: 'agenda', loadChildren: () => import('./agenda/agenda.module').then(x => x.AgendaModule )}
+    { path: 'agenda', loadChildren: () => import('./agenda/agenda.module').then(x => x.AgendaModule )},
+    { path: 'configuracao', component: ConfiguracaoMasterComponent },
+    { path: 'configuracao/editar/:id', component: ConfiguracaoDetailComponent },
+    { path: 'configuracao/novo', component: ConfiguracaoDetailComponent },
   ]}
 ]
 
@@ -44,7 +51,9 @@ let routes: Routes = [
     IncluiralunoComponent,
     TurmaComponent,
     EditarTurmaComponent,
-    AlunoMasterComponent
+    AlunoMasterComponent,
+    ConfiguracaoMasterComponent,
+    ConfiguracaoDetailComponent
   ],
   imports: [
     CommonModule,
@@ -55,7 +64,8 @@ let routes: Routes = [
     SharedModule,
     NgbModalModule,
     NgbTooltipModule,
-    InternoModule
+    InternoModule,
+    QuillModule
   ],
   providers: [
     SharedService

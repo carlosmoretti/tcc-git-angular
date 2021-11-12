@@ -1,0 +1,9 @@
+.full {
+  min-height: 90vh !important;
+}
+
+footer {
+  height: 10vh !important;
+  /* Height of the footer*/
+  background: #2c3e50;
+}

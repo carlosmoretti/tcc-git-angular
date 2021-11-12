@@ -1,7 +1,8 @@
+import { ConfiguracaoService } from './../../service/configuracao/configuracao.service';
 import { RoleEnum } from './../../enum/role.enum';
 import { AutenticacaoService } from './../../service/autenticacao/autenticacao.service';
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-restrito',
@@ -10,10 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RestritoComponent implements OnInit {
 
-  constructor(private router: Router, private service: AutenticacaoService) { }
+  constructor(private router: Router, private service: AutenticacaoService, private configuracaoService: ConfiguracaoService) { }
+
+  contatoInstituicao!: string;
 
   ngOnInit(): void {
     this.service.executaRefreshToken();
+
+    this.configuracaoService.getByNome('footer_contato_instituicao')
+      .subscribe((e: any) => this.contatoInstituicao = e.valor);
   }
 
   deslogar() {
@@ -33,7 +39,8 @@ export class RestritoComponent implements OnInit {
       { titulo: 'Turmas', url: 'turmas', perfis: ['interno'], nivel: 2 },
       { titulo: 'Professores', url: 'interno', perfis: ['interno'], nivel: 2 },
       { titulo: 'Agenda', url: 'agenda', perfis: ['interno'], nivel: 1 },
-      { titulo: 'Aluno', url: 'aluno', perfis: ['interno'], nivel: 2 }
+      { titulo: 'Aluno', url: 'aluno', perfis: ['interno'], nivel: 2 },
+      { titulo: 'Configuração', url: 'configuracao', perfis: ['interno'], nivel: 3 }
     ]
 
     let usuarioLogado = this.service.getUsuarioLogado();

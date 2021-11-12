@@ -13,6 +13,6 @@ export class ConfiguracaoService extends GenericService<any> {
   }
 
   getByNome(nome: string) {
-    return this.http.get(environment.apiUrl + '/configuracao/' + nome);
+    return this.http.get(environment.apiUrl + '/configuracao/parametro/' + nome);
   }
 }
