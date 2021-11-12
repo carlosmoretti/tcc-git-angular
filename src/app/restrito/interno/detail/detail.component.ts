@@ -3,6 +3,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { InternoService } from 'src/app/service/interno/interno.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-detail',
@@ -17,6 +18,7 @@ export class DetailComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private service : InternoService,
     private toastrService : ToastrService,
+    private location: Location
     ) { }
 
   labelTela!: string;
@@ -57,10 +59,16 @@ export class DetailComponent implements OnInit {
   salvar() {
     if(this.id == null) {
       return this.service.post(this.model)
-      .subscribe(e => this.toastrService.success("Informações do responsável salvas com sucesso."));
+      .subscribe(e => {
+        this.toastrService.success("Informações do professor salvas com sucesso.")
+        this.location.back();
+      });
     } else {
       return this.service.put(this.model)
-      .subscribe(e => this.toastrService.success("Informações do responsável salvas com sucesso."));
+      .subscribe(e => {
+        this.toastrService.success("Informações do professor salvas com sucesso.")
+        this.location.back();
+      });
     }
   }
 

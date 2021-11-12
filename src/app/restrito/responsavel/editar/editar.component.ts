@@ -3,6 +3,7 @@ import { ResponsavelService } from './../../../service/responsavel/responsavel.s
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-editar',
@@ -11,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class EditarComponent implements OnInit {
 
-  constructor(private service: ResponsavelService, private route: ActivatedRoute, private toastrService: ToastrService, private alunoService: AlunoService) { }
+  constructor(private service: ResponsavelService, private route: ActivatedRoute, private toastrService: ToastrService, private alunoService: AlunoService, private location: Location) { }
 
   responsavel: any;
   visaoInclusao!: boolean;
@@ -56,10 +57,16 @@ export class EditarComponent implements OnInit {
   salvar() {
     if(this.idUsuario == null) {
       return this.service.post(this.responsavel)
-      .subscribe(e => this.toastrService.success("Informações do responsável salvas com sucesso."));
+      .subscribe(e => {
+        this.toastrService.success("Informações do responsável salvas com sucesso.")
+        this.location.back();
+      });
     } else {
       return this.service.put(this.responsavel)
-      .subscribe(e => this.toastrService.success("Informações do responsável salvas com sucesso."));
+      .subscribe(e => {
+        this.toastrService.success("Informações do responsável salvas com sucesso.")
+        this.location.back();
+      });
     }
   }
 

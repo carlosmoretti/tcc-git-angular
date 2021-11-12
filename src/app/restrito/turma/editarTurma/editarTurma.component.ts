@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { InternoService } from './../../../service/interno/interno.service';
 import { Observable } from 'rxjs';
 import { SharedService } from './../../../service/shared.service';
@@ -21,7 +22,8 @@ export class EditarTurmaComponent implements OnInit {
     private alunoService: AlunoService,
     private toastr: ToastrService,
     private sharedService: SharedService,
-    private professorService: InternoService) { }
+    private professorService: InternoService,
+    private location: Location) { }
 
   item: any = {};
   labelTela: string = 'Incluir Turma';
@@ -70,10 +72,16 @@ export class EditarTurmaComponent implements OnInit {
   salvar() {
     if(this.route.snapshot.params.id != null) {
       this.service.put(this.item)
-        .subscribe(e => this.toastr.success("Turma salva com sucesso!"));
+        .subscribe(e => {
+          this.toastr.success("Turma salva com sucesso!")
+          this.location.back();
+        });
     } else {
       this.service.post(this.item)
-        .subscribe(e => this.toastr.success("Turma salva com sucesso!"));
+        .subscribe(e => {
+          this.toastr.success("Turma salva com sucesso!")
+          this.location.back();
+        });
     }
   }
 
