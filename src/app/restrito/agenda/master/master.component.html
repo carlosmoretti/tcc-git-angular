@@ -20,12 +20,12 @@
       </div>
     </div>
     <div class="form-row" *ngIf="turmaSelecionada">
-      <div class="col-sm-2" *ngFor="let item of agendas$ | async">
+      <div class="col-sm-2 mb-2" *ngFor="let item of agendas$ | async">
         <div class="bg-primary br text-white p-2 pointer" [routerLink]="['editar', item.id]">
-          {{item.dataEscrita | date: 'dd/MM/yyyy'}}
+          {{item.dataEscrita | date: 'dd/MM/yyyy HH:mm:ss'}}
         </div>
       </div>
-      <div class="col-sm-2">
+      <div class="col-sm-2 mb-2">
         <div class="bg-light br p-2 pointer" [routerLink]="['preencher', turmaSelecionada]">
           <i class="fa fa-plus" aria-hidden="true"></i> Adicionar
         </div>

@@ -1,3 +1,4 @@
+import { ConfiguracaoService } from './service/configuracao/configuracao.service';
 import { AutenticacaoService } from './service/autenticacao/autenticacao.service';
 import { Component, OnInit } from '@angular/core';
 
