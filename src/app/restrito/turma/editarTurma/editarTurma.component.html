@@ -34,6 +34,10 @@
         <input [disabled]="true" type="text" class="form-control" [(ngModel)]="item.matricula" name="matricula" required/>
       </div>
       <div class="form-group">
+        <label>Nome da Turma</label>
+        <input type="text" class="form-control" [(ngModel)]="item.nome" name="nome" required/>
+      </div>
+      <div class="form-group">
         <label>Professor Responsável</label>
         <select required class="form-control w-25" [(ngModel)]="item.professorResponsavel.id" name="professorResponsavel">
           <option disabled selected>Selecione</option>

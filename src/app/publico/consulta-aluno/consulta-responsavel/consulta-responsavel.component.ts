@@ -1,3 +1,4 @@
+import { ConfiguracaoService } from './../../../service/configuracao/configuracao.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,10 +10,14 @@ export class ConsultaResponsavelComponent implements OnInit {
 
   matricula!: any;
   armazenarMatricula!: boolean;
+  linkLogo!: string;
 
-  constructor() { }
+  constructor(private configuracaoService: ConfiguracaoService) { }
 
   ngOnInit(): void {
+
+    this.configuracaoService.getByNome('url_logo_escola')
+      .subscribe((e: any) => this.linkLogo = e.valor);
 
     this.matricula = localStorage.getItem('matricula');
     this.armazenarMatricula = localStorage.getItem('armazenarMatricula') == 'true';

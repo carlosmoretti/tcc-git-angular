@@ -37,7 +37,7 @@ export class ConsultaResponsavelEditorComponent implements OnInit {
 
   abrirAgenda(content: any, item: any) {
     this.agendaModal = item.registros[0].conteudo;
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title', size: 'lg'}).result.then((result) => {
     });
   }
 

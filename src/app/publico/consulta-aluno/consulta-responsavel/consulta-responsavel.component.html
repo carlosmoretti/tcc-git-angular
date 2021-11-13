@@ -1,13 +1,18 @@
 <div class="d-flex w-100 justify-content-center align-items-center h-100">
-  <div class="card">
-    <div class="card-header">Insira sua Matrícula</div>
-    <div class="card-body">
-      <div class="form-group">
-        <label for="cpf">Matrícula</label>
-        <input type="text" [(ngModel)]="matricula" (ngModelChange)="onChangeArmazenarMatricula(armazenarMatricula)" class="form-control" />
+  <div>
+    <div class="w-100 text-center">
+      <img [src]="linkLogo" class="mb-2" height="100px" />
+    </div>
+    <div class="card">
+      <div class="card-header">Insira sua Matrícula</div>
+      <div class="card-body">
+        <div class="form-group">
+          <label for="cpf">Matrícula</label>
+          <input type="text" [(ngModel)]="matricula" (ngModelChange)="onChangeArmazenarMatricula(armazenarMatricula)" class="form-control" />
+        </div>
+        <div><input type="checkbox" [(ngModel)]="armazenarMatricula" (ngModelChange)="onChangeArmazenarMatricula($event)"> Armazenar matricula</div>
+        <a class="btn btn-sm btn-primary mt-2" [routerLink]="[matricula]">Consultar</a>
       </div>
-      <div><input type="checkbox" [(ngModel)]="armazenarMatricula" (ngModelChange)="onChangeArmazenarMatricula($event)"> Armazenar matricula</div>
-      <a class="btn btn-sm btn-primary mt-2" [routerLink]="[matricula]">Consultar</a>
     </div>
   </div>
 </div>

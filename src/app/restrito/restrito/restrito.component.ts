@@ -14,12 +14,16 @@ export class RestritoComponent implements OnInit {
   constructor(private router: Router, private service: AutenticacaoService, private configuracaoService: ConfiguracaoService) { }
 
   contatoInstituicao!: string;
+  linkImagemLogo!: string;
 
   ngOnInit(): void {
     this.service.executaRefreshToken();
 
     this.configuracaoService.getByNome('footer_contato_instituicao')
       .subscribe((e: any) => this.contatoInstituicao = e.valor);
+
+    this.configuracaoService.getByNome('url_logo_escola')
+      .subscribe((e: any) => this.linkImagemLogo = e.valor);
   }
 
   deslogar() {
