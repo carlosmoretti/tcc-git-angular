@@ -1,5 +1,6 @@
+import { CustomIconDto } from './custom-icon.dto';
 import { GridDto } from './grid.dto';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import GenericService from 'src/app/service/generic.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -17,7 +18,11 @@ export class GridComponent implements OnInit {
 
   keyword!: string;
   config!: GridDto;
+
   @Input() service!: GenericService<any>;
+  @Input() addVisible: boolean = true;
+  @Input() customIcons!: CustomIconDto[];
+  @Output() customEvent = new EventEmitter();
 
   ngOnInit(): void {
     this.consultar(1, '');
@@ -29,6 +34,10 @@ export class GridComponent implements OnInit {
         this.config = new GridDto(e.itens.columns, 'novo', 'editar', e, e.itens.results);
         this.PAGINA_SELECIONADA = pagina;
       })
+  }
+
+  emitCustomEvent(id: number) {
+    this.customEvent.emit(id);
   }
 
   deleteRegister(id: number, i: number) {

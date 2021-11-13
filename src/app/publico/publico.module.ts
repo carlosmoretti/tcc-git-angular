@@ -1,3 +1,4 @@
+import { NotificacaoMasterComponent } from './../restrito/notificacao/notificacao-master/notificacao-master.component';
 import { QuillModule } from 'ngx-quill';
 import { ConsultaResponsavelDetailComponent } from './consulta-aluno/consulta-responsavel-detail/consulta-responsavel-detail.component';
 import { ConfiguracaoService } from './../service/configuracao/configuracao.service';
@@ -20,7 +21,7 @@ let routes: Routes = [
     { path: 'trocasenha/:id', component: TrocasenhaComponent },
     { path: 'consulta/agenda', component: ConsultaResponsavelComponent },
     { path: 'consulta/agenda/:matricula', component: ConsultaResponsavelDetailComponent },
-    { path: 'consulta/agenda/:matricula/:matriculaAluno', component: ConsultaResponsavelEditorComponent },
+    { path: 'consulta/agenda/:matricula/:matriculaAluno', component: ConsultaResponsavelEditorComponent }
   ]}
 ]
 

@@ -22,6 +22,7 @@ import { AlunoMasterComponent } from './aluno/aluno-master/aluno-master.componen
 import { ConfiguracaoMasterComponent } from './configuracao/configuracao-master/configuracao-master.component';
 import { componentFactoryName } from '@angular/compiler';
 import { ConfiguracaoDetailComponent } from './configuracao/configuracao-detail/configuracao-detail.component';
+import { NotificacaoMasterComponent } from './notificacao/notificacao-master/notificacao-master.component';
 
 let routes: Routes = [
   { path: '', component: RestritoComponent, children: [
@@ -38,6 +39,8 @@ let routes: Routes = [
     { path: 'configuracao', component: ConfiguracaoMasterComponent },
     { path: 'configuracao/editar/:id', component: ConfiguracaoDetailComponent },
     { path: 'configuracao/novo', component: ConfiguracaoDetailComponent },
+    { path: 'notificacao', component: NotificacaoMasterComponent },
+    { path: 'notificacao/consultar/:id', component: NotificacaoMasterComponent }
   ]}
 ]
 
@@ -53,7 +56,8 @@ let routes: Routes = [
     EditarTurmaComponent,
     AlunoMasterComponent,
     ConfiguracaoMasterComponent,
-    ConfiguracaoDetailComponent
+    ConfiguracaoDetailComponent,
+    NotificacaoMasterComponent
   ],
   imports: [
     CommonModule,

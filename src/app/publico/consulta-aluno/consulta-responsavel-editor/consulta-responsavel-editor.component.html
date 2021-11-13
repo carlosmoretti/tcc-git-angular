@@ -1,4 +1,3 @@
-
 <ng-template #content let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Agenda</h4>
@@ -8,6 +7,19 @@
   </div>
   <div class="modal-body">
     <quill-editor [(ngModel)]="agendaModal" [disabled]="true"></quill-editor>
+  </div>
+</ng-template>
+
+<ng-template #enviarMensagem let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Enviar Recado</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <quill-editor [(ngModel)]="recadoResponsavel"></quill-editor>
+    <button class="btn btn-primary btn-sm mt-2" (click)="salvarRecado()">Enviar</button>
   </div>
 </ng-template>
 
@@ -21,7 +33,7 @@
           <li class="breadcrumb-item" aria-current="page"><a href="#" [routerLink]="" (click)="voltar()">Voltar</a></li>
         </ol>
       </nav>
-
+      <button class="btn btn-sm btn-primary mb-2" (click)="abrirEnviarRecado(enviarMensagem)">Enviar recado</button>
       <div class="form-row">
         <div class="col-sm-6 mb-2">
           <label>Data Inicial</label>
@@ -51,9 +63,7 @@
             <td>{{item.professor.nome}} {{item.professor.sobrenome}}</td>
           </tr>
         </tbody>
-
       </table>
-
     </div>
   </div>
 </div>

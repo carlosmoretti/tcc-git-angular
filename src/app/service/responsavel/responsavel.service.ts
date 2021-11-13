@@ -15,4 +15,8 @@ export class ResponsavelService extends GenericService<any> {
   alunosPorResponsavel(id: number) {
     return this.httpClient.get(environment.apiUrl + 'responsavel/' + id + '/alunos');
   }
+
+  responsavelPorMatricula(matricula: string) {
+    return this.httpClient.get(environment.apiUrl + 'responsavel/matricula/' + matricula);
+  }
 }
