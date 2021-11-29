@@ -1,3 +1,4 @@
+import { InternoService } from 'src/app/service/interno/interno.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,16 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private internoService: InternoService) { }
 
-  cardsInfo = [
-    { valor: 255, descricao: 'Responsáveis cadastrados'},
-    { valor: 152, descricao: 'Agendas preenchidas'},
-    { valor: 420, descricao: 'Alunos cadastrados'},
-    { valor: 15, descricao: 'Dias de uso do sistema.'},
-  ]
+  cardsInfo: any[] = [];
+
+  dashboardDados: any;
 
   ngOnInit(): void {
+    this.internoService.dashboard().subscribe((e: any) => {
+      this.cardsInfo = e;
+    });
   }
 
 }

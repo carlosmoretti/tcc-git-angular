@@ -15,4 +15,8 @@ export class InternoService extends GenericService<any> {
   niveis() {
     return this.httpClient.get(environment.apiUrl + 'interno/niveis');
   }
+
+  dashboard() {
+    return this.httpClient.get(environment.apiUrl + 'interno/dashboard');
+  }
 }
