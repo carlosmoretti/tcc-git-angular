@@ -1,6 +1,14 @@
-.bg-info {
+.bg-light {
   border-radius: 5px;
-  color: #FFF;
+  color: #000;
   cursor: pointer;
   height: 50px;
+}
+
+.nao-visualizado {
+  border-left: 5px solid #e84118 !important;
+}
+
+.visualizado {
+  border-left: 5px solid #4cd137 !important;
 }

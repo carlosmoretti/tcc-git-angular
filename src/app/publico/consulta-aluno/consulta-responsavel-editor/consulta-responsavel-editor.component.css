@@ -2,10 +2,6 @@
   margin: 1rem;
 }
 
-.h100 {
-  height: 100vh !important;
-}
-
 .bg-info {
   font-size: 1.3rem;
   border-radius: 5px;
@@ -16,4 +12,10 @@
 
 .pointer {
   cursor: pointer;
+}
+
+@media only screen and (min-width: 1024px) {
+  .h100 {
+    height: 100vh;
+  }
 }

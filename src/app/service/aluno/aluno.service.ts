@@ -36,4 +36,8 @@ export class AlunoService extends GenericService<any> {
     params = params.append('dataFim', this.getDataAsString(dataFim));
     return this.httpClient.get(environment.apiUrl + '/consulta-responsavel/agenda/' + matriculaAluno, { params });
   }
+
+  public visualizarAgenda(idAgenda: number) {
+    return this.httpClient.put(environment.apiUrl + '/consulta-responsavel/visualizar/' + idAgenda, {});
+  }
 }

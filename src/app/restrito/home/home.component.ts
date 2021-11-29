@@ -8,11 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private internoService: InternoService) { }
+  constructor(private internoService: InternoService) {
+  }
 
   cardsInfo: any[] = [];
 
   dashboardDados: any;
+
 
   ngOnInit(): void {
     this.internoService.dashboard().subscribe((e: any) => {

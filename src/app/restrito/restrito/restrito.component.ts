@@ -1,3 +1,4 @@
+import { RecadoService } from './../../service/recado/recado.service';
 import { ConfiguracaoService } from './../../service/configuracao/configuracao.service';
 import { RoleEnum } from './../../enum/role.enum';
 import { AutenticacaoService } from './../../service/autenticacao/autenticacao.service';
@@ -11,10 +12,12 @@ import { Component, HostListener, OnInit } from '@angular/core';
 })
 export class RestritoComponent implements OnInit {
 
-  constructor(private router: Router, private service: AutenticacaoService, private configuracaoService: ConfiguracaoService) { }
+  constructor(private router: Router, private service: AutenticacaoService, private configuracaoService: ConfiguracaoService, private recadoService: RecadoService) { }
 
   contatoInstituicao!: string;
   linkImagemLogo!: string;
+
+  recadosPendentes!: number;
 
   ngOnInit(): void {
     this.service.executaRefreshToken();

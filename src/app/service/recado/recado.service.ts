@@ -14,4 +14,8 @@ export class RecadoService extends GenericService<any> {
   visualizar(id: number) {
     return this.http.put(environment.apiUrl + 'recado/visualizar/' + id, null);
   }
+
+  pendentes() {
+    return this.http.get(environment.apiUrl + 'recado/pendentes');
+  }
 }

@@ -7,3 +7,12 @@ footer {
   /* Height of the footer*/
   background: #2c3e50;
 }
+
+.white {
+  background-color: #FFF !important;
+}
+
+.shadow {
+  -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.05) !important;
+  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.05) !important;
+}

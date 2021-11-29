@@ -1,7 +1,7 @@
 th {
-  background-color: #2c3e50 !important;
-  border-bottom: 3px solid #12181f !important;
-  color: #FFF !important;
+  background-color: #f8f9fc !important;
+  border-bottom: 3px solid #e8e8e8 !important;
+  color: #4e73df!important
 }
 
 tr {
@@ -10,4 +10,18 @@ tr {
 
 .table-radius {
   border-radius: 0.4rem;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+  background-color: #f8f9fc !important
+}
+
+thead {
+  font-size: 14px;
+  font-weight: bolder;
+}
+
+tbody {
+  font-size: 12px !important;
+  font-weight: 300 !important;
 }

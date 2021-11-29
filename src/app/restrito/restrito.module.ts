@@ -1,3 +1,4 @@
+import { NgApexchartsModule } from 'ng-apexcharts';
 import { QuillModule } from 'ngx-quill';
 import { SharedService } from './../service/shared.service';
 import { TurmaService } from './../service/turma/turma.service';
@@ -69,7 +70,8 @@ let routes: Routes = [
     NgbModalModule,
     NgbTooltipModule,
     InternoModule,
-    QuillModule
+    QuillModule,
+    NgApexchartsModule
   ],
   providers: [
     SharedService

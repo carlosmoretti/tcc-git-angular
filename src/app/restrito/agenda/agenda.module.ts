@@ -1,3 +1,4 @@
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from './../../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -25,7 +26,8 @@ let routes: Routes = [
     RouterModule.forChild(routes),
     QuillModule.forRoot(),
     FormsModule,
-    SharedModule
+    SharedModule,
+    NgbTooltipModule
   ]
 })
 export class AgendaModule { }
