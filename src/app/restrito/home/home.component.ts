@@ -14,12 +14,17 @@ export class HomeComponent implements OnInit {
   cardsInfo: any[] = [];
 
   dashboardDados: any;
-
+  agendasHoje: any;
 
   ngOnInit(): void {
     this.internoService.dashboard().subscribe((e: any) => {
       this.cardsInfo = e;
     });
+
+    this.internoService.dashboardAgendasHoje()
+      .subscribe(x => {
+        this.agendasHoje = x
+      })
   }
 
 }

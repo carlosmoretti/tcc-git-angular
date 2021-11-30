@@ -14,6 +14,7 @@ export class AlunosComponent implements OnInit {
 
   agenda: any;
   alunos!: Array<any>;
+  alunosFaltantes!: Array<any>;
   registroSelecionadoModal: any;
 
   constructor(private route: ActivatedRoute,
@@ -31,7 +32,8 @@ export class AlunosComponent implements OnInit {
 
         this.agendaService.alunosPorAgenda(this.agenda.id)
           .subscribe((e: any) => {
-            this.alunos = e;
+            this.alunos = e.filter((x: any) => x.alunoPresente);
+            this.alunosFaltantes = e.filter((x: any) => !x.alunoPresente);
           })
       });
   }

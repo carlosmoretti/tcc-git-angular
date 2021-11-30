@@ -23,4 +23,8 @@ export class InternoService extends GenericService<any> {
   dashboardAlunoTurma() {
     return this.httpClient.get(environment.apiUrl + 'interno/dashboard/aluno-turma');
   }
+
+  dashboardAgendasHoje() {
+    return this.httpClient.get(environment.apiUrl + 'interno/dashboard/agendasHoje');
+  }
 }
