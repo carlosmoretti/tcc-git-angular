@@ -17,6 +17,7 @@ import { ConsultaResponsavelEditorComponent } from './consulta-aluno/consulta-re
 
 let routes: Routes = [
   { path: '', component: PublicoComponent, children: [
+    // { path: 'auth/:perfil', component: AutenticacaoComponent },
     { path: 'auth/:perfil', component: AutenticacaoComponent },
     { path: 'trocasenha/:id', component: TrocasenhaComponent },
     { path: 'consulta/agenda', component: ConsultaResponsavelComponent },

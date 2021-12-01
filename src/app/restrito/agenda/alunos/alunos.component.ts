@@ -55,4 +55,15 @@ export class AlunosComponent implements OnInit {
     this.location.back();
   }
 
+  removerAgenda() {
+    const confirmResult = confirm("Deseja realmente remover a agenda?");
+
+    if(confirmResult)
+      this.agendaService.delete(this.agenda.id)
+        .subscribe(x => {
+          this.toastrService.success("Agenda removida com sucesso.");
+          this.location.back();
+        });
+  }
+
 }
